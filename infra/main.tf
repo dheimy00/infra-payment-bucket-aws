@@ -14,6 +14,9 @@ module "s3_bucket" {
     {
       id     = "log"
       status = "Enabled"
+      filter = {
+        prefix = "logs/"
+      }
       expiration_days = 90
       transitions = [
         {
