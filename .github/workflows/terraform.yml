@@ -34,7 +34,9 @@ jobs:
         run: |
           echo "Configuring Git credentials..."
           git config --global url."https://${{ secrets.GH_PAT_MODULES }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-
+        env:
+          GH_PAT_MODULES: ${{ secrets.GH_PAT_MODULES }}
+          
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
