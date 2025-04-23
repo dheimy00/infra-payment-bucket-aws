@@ -1,5 +1,5 @@
 module "s3_bucket" {
-    source = "git::https://github.com/dheimy00/modules-infra-bucket-S3-aws.git/modules?ref=v1.0.0"
+    source = "git::https://github.com/dheimy00/modules-infra-bucket-S3-aws.git/modules?ref=v1.0.1"
 
   bucket_name = "payment-bucket-${random_string.suffix.result}"
   versioning_enabled = true
