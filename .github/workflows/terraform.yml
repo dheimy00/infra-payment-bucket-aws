@@ -32,6 +32,12 @@ jobs:
 
       - name: Configure Git credentials for private modules
         run: |
+          echo "Verifying GH_PAT_MODULES secret..."
+          if [ -z "${{ secrets.GH_PAT_MODULES }}" ]; then
+            echo "Error: GH_PAT_MODULES secret is empty or not set"
+            exit 1
+          fi
+          echo "Configuring Git credentials..."
           git config --global url."https://${{ secrets.GH_PAT_MODULES }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"        
 
       - name: Debug Git configuration
