@@ -29,10 +29,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-    
+
+      - name: Configure Git credentials for private modules
+        run: |
+          git config --global url."https://${{ secrets.GH_PAT_MODULES }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"        
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: 1.8.3
 
@@ -51,7 +54,6 @@ jobs:
 
       - name: Terraform Init
         run: |
-          git config --global url."https://${{ secrets.GH_PAT_MODULES }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
           cd infra && terraform init \
             -backend-config="bucket=${{ inputs.aws-statefile-s3-bucket }}" \
             -backend-config="key=${{ github.event.repository.name }}" \
