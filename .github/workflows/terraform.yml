@@ -30,16 +30,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Checkout private module repo
+      - name: Configure Git credentials for private modules
         run: |
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/dheimy00/modules-infra-bucket-S3-aws.git modules/s3_bucket
-          cd modules/s3_bucket
-          git checkout v1.0.1
-          # Authenticate using the GitHub token
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/dheimy00/modules-infra-bucket-S3-aws.git
-
+          git config --global url."https://${{ secrets.GH_PAT_MODULES }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"        
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
