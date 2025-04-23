@@ -32,7 +32,7 @@ jobs:
 
       - name: Checkout private module repo
         run: |
-          git clone https://github.com/dheimy00/modules-infra-bucket-S3-aws.git modules/s3_bucket
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/dheimy00/modules-infra-bucket-S3-aws.git modules/s3_bucket
           cd modules/s3_bucket
           git checkout v1.0.1
           # Authenticate using the GitHub token
