@@ -32,8 +32,15 @@ jobs:
 
       - name: Configure Git credentials for private modules
         run: |
-          git config --global url."https://${{ secrets.GH_PAT_MODULES }}@github.com/".insteadOf "https://github.com/"
-          git config --global credential.helper ""
+          echo "Configuring Git credentials..."
+          git config --global url."https://${{ secrets.GH_PAT_MODULES }}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+
+      - name: Debug Git configuration
+        run: |
+          echo "Checking Git configuration..."
+          git config --global --list | grep url
+          echo "Testing Git access..."
+          git ls-remote https://github.com/dheimy00/modules-infra-bucket-S3-aws.git
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
