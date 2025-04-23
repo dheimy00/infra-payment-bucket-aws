@@ -1,7 +1,7 @@
 module "s3_bucket" {
   source = "git::https://github.com/dheimy00/modules-infra-bucket-S3-aws.git?ref=v1.0.1"
 
-  bucket_name = "payment-bucket-${random_string.suffix.result}"
+  bucket_name = "${var.bucket_name}-${random_string.suffix.result}"
   versioning_enabled = true
   encryption_algorithm = "AES256"
 
