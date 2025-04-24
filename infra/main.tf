@@ -1,5 +1,5 @@
 module "s3_bucket" {
-  source = "git::https://github.com/dheimy00/modules-infra-bucket-S3-aws.git?ref=v1.0.12"
+  source = "git::https://github.com/dheimy00/modules-infra-bucket-S3-aws.git?ref=v1.0.13"
 
   bucket_name = "${var.bucket_name}"
   versioning_enabled = true
