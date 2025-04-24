@@ -3,6 +3,6 @@ terraform {
     bucket = "dheimy00-us-east-2-terraform-statefile"
     key    = "infra/terraform.tfstate"
     region = "us-east-2"
-    dynamodb_table = "dheimy00-us-east-2-terraform-lock""    
+    dynamodb_table = "dheimy00-us-east-2-terraform-lock"    
   }
 }
