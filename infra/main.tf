@@ -1,7 +1,7 @@
 module "s3_bucket" {
   source = "git::https://github.com/dheimy00/modules-infra-bucket-S3-aws.git?ref=v1.0.26"
 
-  bucket_name = local.bucket_name
+  bucket_name = var.bucket_name
   versioning_enabled = true
   encryption_algorithm = "AES256"
 

@@ -1,1 +1,1 @@
-bucket_name = "payment-stock"
+bucket_name = "payment-stock-${terraform.workspace}"
