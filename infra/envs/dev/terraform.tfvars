@@ -1,1 +1,1 @@
-bucket_name = "payment-bucket"
+bucket_name = "payment-stock"
